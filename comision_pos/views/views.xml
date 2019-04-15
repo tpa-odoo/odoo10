@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="view_pos_config_form2">
+      <field name="name">pos.config.form.view</field>
+      <field name="model">pos.config</field>
+      <field name="inherit_id" ref="point_of_sale.view_pos_config_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form/sheet/group[4]" position="after">
+          <group col="4">
+            <field name='comision_id'/>
+          </group>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="order_inherited_form_view" model="ir.ui.view">
+      <field name="name">pos.order.inherited.view</field>
+      <field name="model">pos.order</field>
+      <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='lines']/tree/field[@name='product_id']" position="before">
+          <field name="supervisor"/>
+          <field name="num_ticket"/>
+          <field name="num_lavador"/>
+        </xpath>
+
+      </field>
+    </record>
+
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="comision_pos_list">
+      <field name="name">comision_pos list</field>
+      <field name="model">comision.config</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="active"/>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="comision_pos_list">
+      <field name="name">comision_pos list</field>
+      <field name="model">comision.config</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only"/>
+              <h2>
+                <field name="name"/>
+              </h2>
+            </div>
+            <field name="active"/>
+
+            <field name="line_ids">
+              <tree>
+                <field name="config_id" invisible="1"/>
+                <field name="product_id"/>
+                <field name="tasa_lavador"/>
+                <field name="tasa_supervisor"/>
+              </tree>
+            </field>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="comision_config_act_window">
+      <field name="name">comision_pos window</field>
+      <field name="res_model">comision.config</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem name="Configuracion de Comisiones"
+              id="comision_config_act_window"
+              parent="point_of_sale.menu_point_config_product"
+              action="comision_config_act_window"/>
+
+  </data>
+</odoo>

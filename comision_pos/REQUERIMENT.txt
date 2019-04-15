@@ -1,0 +1,12 @@
+The requirement is:
+* Show a popup window with the option to choose a user, and two fields type text,
+    these 3 fields must be mandatory if the product chosen is in the list of model "comision.config_line",
+    in case the product Do not be in this list, do not show the pop-up window.
+
+* Each point of sale can have different "comision.config_line", so the "pos.config" has a variable "comision_id"
+
+* The pop-up window should only show the users that have the boolean "supervisor_pos"
+
+* When confirming the sale the fields filled in (user and 2 text fields) must appear in the "pos.order.line"
+
+Odoo v1o

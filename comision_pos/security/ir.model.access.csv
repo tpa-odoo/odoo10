@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_comision_pos,comision.config,model_comision_config,point_of_sale.group_pos_manager,1,1,1,1
+access_comision_pos_line,comision.config.line,model_comision_config_line,point_of_sale.group_pos_manager,1,1,1,1
